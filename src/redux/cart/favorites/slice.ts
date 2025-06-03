@@ -1,49 +1,28 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Produto } from '../../../App'
+import { Produto } from '../../../types'
 
-type CartState = {
-  listItemsCart: Produto[]
-  listItemsFavorite: Produto[]
+interface FavoritesState {
+  listFavorites: Produto[]
 }
 
-const initialState: CartState = {
-  listItemsCart: [],
-  listItemsFavorite: []
+const initialState: FavoritesState = {
+  listFavorites: []
 }
 
-const cartSlice = createSlice({
-  name: 'cart',
+const favoritesSlice = createSlice({
+  name: 'favorites',
   initialState,
   reducers: {
-    addCart: (state, action: PayloadAction<Produto>) => {
-      const index = state.listItemsCart.findIndex(
-        (item) => item.id === action.payload.id
-      )
-      if (index === -1) {
-        state.listItemsCart.push(action.payload)
-      }
+    addToFavorite: (state, action: PayloadAction<Produto>) => {
+      state.listFavorites.push(action.payload)
     },
-    removeCart: (state, action: PayloadAction<number>) => {
-      state.listItemsCart = state.listItemsCart.filter(
-        (item) => item.id !== action.payload
-      )
-    },
-    addFavorite: (state, action: PayloadAction<Produto>) => {
-      const index = state.listItemsFavorite.findIndex(
-        (item) => item.id === action.payload.id
-      )
-      if (index === -1) {
-        state.listItemsFavorite.push(action.payload)
-      }
-    },
-    removeFavorite: (state, action: PayloadAction<number>) => {
-      state.listItemsFavorite = state.listItemsFavorite.filter(
+    removeToFavorite: (state, action: PayloadAction<number>) => {
+      state.listFavorites = state.listFavorites.filter(
         (item) => item.id !== action.payload
       )
     }
   }
 })
 
-export const { addCart, removeCart, addFavorite, removeFavorite } =
-  cartSlice.actions
-export default cartSlice.reducer
+export const { addToFavorite, removeToFavorite } = favoritesSlice.actions
+export default favoritesSlice.reducer

@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
-
-import cartReducer from '../redux/cart/favorites/slice'
+import cartReducer from './cart/carrinho/slice'
+import favoritesReducer from './cart/favorites/slice'
 import { api } from './cart/services/api'
 
 export const store = configureStore({
   reducer: {
     cart: cartReducer,
+    favorites: favoritesReducer,
     [api.reducerPath]: api.reducer
   },
   middleware: (getDefaultMiddleware) =>
@@ -13,3 +14,4 @@ export const store = configureStore({
 })
 
 export type RootReducer = ReturnType<typeof store.getState>
+export type AppDispatch = typeof store.dispatch

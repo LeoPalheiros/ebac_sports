@@ -5,13 +5,6 @@ import { GlobalStyle } from './styles'
 import { Provider } from 'react-redux'
 import { store } from './redux/store'
 
-export type Produto = {
-  id: number
-  nome: string
-  preco: number
-  imagem: string
-}
-
 function App() {
   return (
     <Provider store={store}>

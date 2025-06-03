@@ -12,7 +12,7 @@ const Header = () => {
   )
 
   const listItemsFavorite = useSelector(
-    (state: RootReducer) => state.cart.listItemsFavorite
+    (state: RootReducer) => state.favorites.listFavorites
   )
 
   const selectorTotalPrice = useSelector(totalPrice)
