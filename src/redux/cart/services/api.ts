@@ -3,10 +3,10 @@ import { Produto } from '../../../types'
 
 export const api = createApi({
   reducerPath: 'api',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: 'http://fake-api-tau.vercel.app/api' }),
   endpoints: (builder) => ({
     getProduct: builder.query<Produto[], void>({
-      query: () => 'products'
+      query: () => 'ebac_sports'
     })
   })
 })
